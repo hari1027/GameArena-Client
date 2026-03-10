@@ -3,9 +3,10 @@ import "./App.css";
 import Login from "./MainComponents/Login";
 import Dashboard from "./MainComponents/Dashboard";
 import SignUp from "./MainComponents/SignUp";
-import { makeUserActive,
-   //makeUserInactive 
-  } from "./Services/ApiService";
+import {
+  makeUserActive,
+  //makeUserInactive
+} from "./Services/ApiService";
 
 function App() {
   const [user, setUser] = useState<string | null>(null);
@@ -35,25 +36,42 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const handleBeforeUnload = () => {
+    const makeInactive = () => {
       const username = sessionStorage.getItem("username");
-      const token = sessionStorage.getItem("token"); // whatever key you store it under
+      const token = sessionStorage.getItem("token");
 
       if (username && token) {
         fetch(`${import.meta.env.VITE_API_BASE_URL}/makeUserActiveToFalse`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`, // keeps your authenticateToken middleware happy
+            Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify({ username }),
-          keepalive: true, // ← this is the key — tells browser to complete request even after page closes
+          keepalive: true,
         });
       }
     };
 
-    window.addEventListener("beforeunload", handleBeforeUnload);
-    return () => window.removeEventListener("beforeunload", handleBeforeUnload);
+    // Desktop — window/tab close
+    window.addEventListener("beforeunload", makeInactive);
+
+    // Mobile + tablet — fires when tab is hidden, app backgrounded, or closed
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === "hidden") {
+        makeInactive();
+      }
+    };
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    // iOS Safari fallback
+    window.addEventListener("pagehide", makeInactive);
+
+    return () => {
+      window.removeEventListener("beforeunload", makeInactive);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      window.removeEventListener("pagehide", makeInactive);
+    };
   }, []);
 
   if (user) {
