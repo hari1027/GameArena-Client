@@ -27,7 +27,7 @@ export interface Ace {
 export interface AceGameDetails {
   players: PlayerSummary[];
   cardsList: CardsList[];
-  currentTurn: string;
+  currentTurn: string | null;
   roundSuit: string | null;
   roundCards: RoundCards[] | []
   message: string;
