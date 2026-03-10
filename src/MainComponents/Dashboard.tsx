@@ -95,7 +95,7 @@ const Dashboard = ({
     sessionStorage.removeItem("roomId");
     sessionStorage.removeItem("gameType");
     sessionStorage.removeItem("gameStarted");
-    sessionStorage.removeItem("timeleft")
+    sessionStorage.removeItem("timeleft");
   };
 
   /* ------------------ socket logic ------------------ */
@@ -281,39 +281,45 @@ const Dashboard = ({
     newSocket.on("fivealive_game_state", (data) => {
       setFiveAliveGameDetails(data);
       snackbarRef.current?.showNotification(`${data.message}`, "info");
-      setTimeout(() => {
-        snackbarRef.current?.showNotification(
-          `${data.currentTurn} turn`,
-          "info",
-        );
-      }, 3000);
+      // setTimeout(() => {
+      //   snackbarRef.current?.showNotification(
+      //     data.currentTurn ? `${data.currentTurn}'s turn` : "",
+      //     "info",
+      //   );
+      // }, 3000);
     });
 
     newSocket.on("fcc_game_state", (data) => {
       setFourCardChallengeGameDetails(data);
       snackbarRef.current?.showNotification(`${data.message}`, "info");
-      setTimeout(() => {
-        snackbarRef.current?.showNotification(`${data.turn} turn`, "info");
-      }, 3000);
+      // setTimeout(() => {
+      //   snackbarRef.current?.showNotification(
+      //     data.currentTurn ? `${data.currentTurn}'s turn` : "",
+      //     "info",
+      //   );
+      // }, 3000);
     });
 
     newSocket.on("scc_game_state", (data) => {
       setSevenCardChallengeGameDetails(data);
       snackbarRef.current?.showNotification(`${data.message}`, "info");
-      setTimeout(() => {
-        snackbarRef.current?.showNotification(`${data.turn} turn`, "info");
-      }, 3000);
+      // setTimeout(() => {
+      //   snackbarRef.current?.showNotification(
+      //     data.currentTurn ? `${data.currentTurn}'s turn` : "",
+      //     "info",
+      //   );
+      // }, 3000);
     });
 
     newSocket.on("ace_game_state", (data) => {
       setAceGameDetails(data);
       snackbarRef.current?.showNotification(`${data.message}`, "info");
-      setTimeout(() => {
-        snackbarRef.current?.showNotification(
-          `${data.currentTurn} turn`,
-          "info",
-        );
-      }, 3000);
+      // setTimeout(() => {
+      //   snackbarRef.current?.showNotification(
+      //     data.currentTurn ? `${data.currentTurn}'s turn` : "",
+      //     "info",
+      //   );
+      // }, 3000);
     });
   };
 
