@@ -108,7 +108,7 @@ const Dashboard = ({
   ) => {
     cleanupSocket();
 
-    const newSocket = io("http://localhost:3000", {
+    const newSocket = io(`${import.meta.env.VITE_API_BASE_URL}`, {
       transports: ["websocket"],
       forceNew: true, // VERY IMPORTANT
     });

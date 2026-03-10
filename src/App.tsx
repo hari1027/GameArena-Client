@@ -3,7 +3,9 @@ import "./App.css";
 import Login from "./MainComponents/Login";
 import Dashboard from "./MainComponents/Dashboard";
 import SignUp from "./MainComponents/SignUp";
-import { makeUserActive, makeUserInactive } from "./Services/ApiService";
+import { makeUserActive,
+   //makeUserInactive 
+  } from "./Services/ApiService";
 
 function App() {
   const [user, setUser] = useState<string | null>(null);
@@ -33,10 +35,20 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const handleBeforeUnload = async () => {
+    const handleBeforeUnload = () => {
       const username = sessionStorage.getItem("username");
-      if (username && username !== null) {
-        await makeUserInactive({ username: username });
+      const token = sessionStorage.getItem("token"); // whatever key you store it under
+
+      if (username && token) {
+        fetch(`${import.meta.env.VITE_API_BASE_URL}/makeUserActiveToFalse`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`, // keeps your authenticateToken middleware happy
+          },
+          body: JSON.stringify({ username }),
+          keepalive: true, // ← this is the key — tells browser to complete request even after page closes
+        });
       }
     };
 
@@ -57,7 +69,7 @@ function App() {
           sessionStorage.removeItem("roomId");
           sessionStorage.removeItem("gameType");
           sessionStorage.removeItem("gameStarted");
-          sessionStorage.removeItem("timeleft")
+          sessionStorage.removeItem("timeleft");
         }}
       />
     );

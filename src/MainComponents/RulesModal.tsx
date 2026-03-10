@@ -9,6 +9,32 @@ interface RulesModalProps {
 
 const rulesData = [
   {
+    gameName : "General Rules",
+    rules: [
+        "You Can play either Play With Mates (Friends) or Play Online or even Make Play With Mates and convert it to online Room (host can only convert)",
+        "You can Join in a room created by your friend through Join Room in the Top",
+        "In Play Online Either you can join in an exsisting room or Create a New Online Room Itself",
+        "In Play With Mates players can leave the game before game starts , Host can Kick any player before starting , Host can Delete the Room , Host can even Change the Game , Host can only start the game",
+        "In Online Rooms the game will be Started in the Stipulated time which will be running or If Max PLayers for that game reaches . The Game will be Started with the Joined Players in the Online Room after time ends",
+        "Host of the Online Room have Option to Delete the Room before the game starts",
+        "Players can Leave the Online Game also before staring",
+        "In Play Online even If you select a game and view the rooms there is an option to view and join rooms of other games also",
+        "You Have the Rules Section on the top when ever you need to view the Rules",
+        "You have the Light and Dark Mode of the Screens also Available on the Top",
+        "You can Logout from the Application using logout on top Or even Browser close (even if you are in the game)",
+        "You can Speak with other players once you are in a room",
+        "You can Mute/UnMute your Mic Whenever you need once you are in a room",
+        "If Any Player left InBetween the game the player will be replaced by a Bot (dont Worry)",
+        "Scrools (Vertically and Horizontally) are available in all Screens so check Correctly (Example: While Viewing you cards in the games)",
+        "To Discard a Card in the games (you can double click the card or Drag and drop in the correct Box) (you can understand once you are in the game)",
+        "For Some Games (Seven Card Challenge) you can Discard many cards if you want so CheckBox will be available to each card's to Select and unSelect Cards",
+        "To (Pick The Card Either from deck or Discarded Top you should click that Respective Boxes) for some games only Deck option will be there (According to Rules of the game it will Change)",
+        "You Should Play your Move within the Stipulated time given (it will be running in the game screen) else you will be automatically Kicked from room and replaced by a Bot",
+        "You can see the (Game details) in the Game Screen Once you are inside a Game",
+        "Individual Game Rules are Illustrated below please read that and once you get the flow you can Enjoy these games"
+    ]
+  },
+  {
     gameName: "Five Alive",
     rules: [
       "Total Cards: 77, Number Cards: 47, Power Cards: 30",
