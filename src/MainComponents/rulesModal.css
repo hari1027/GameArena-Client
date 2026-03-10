@@ -1,0 +1,74 @@
+.rules-dialog .MuiPaper-root {
+  border-radius: 12px;
+}
+
+.dialog-title {
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dialog-close-btn {
+  position: relative;
+  color: black;
+}
+
+
+/* Content */
+.rules-content {
+  padding: 20px !important;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Game Block */
+.rules-game-block {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Game Title */
+.rules-game-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--primary-accent);
+}
+
+/* Rules List */
+.rules-list {
+  padding-left: 20px;
+  margin: 0;
+}
+
+.rules-list li {
+  margin-bottom: 6px;
+  line-height: 1.5;
+  font-size: 14px;
+}
+
+/* Divider */
+.rules-divider {
+  margin-top: 10px;
+  height: 1px;
+  background: #212121;
+  opacity: 0.5;
+}
+
+/* Scroll if long */
+.rules-content {
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+/* Scrollbar */
+.rules-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.rules-content::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 10px;
+}

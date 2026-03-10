@@ -1,0 +1,213 @@
+.ace-app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-main);
+  color: var(--text-primary);
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  
+}
+
+.ace-app-container::-webkit-scrollbar {
+  display: none;
+}
+
+
+.ace-bottom-deck-wrapper {
+  padding: 10px;
+}
+
+/* Horizontal Scroll Row */
+.ace-deck-row {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-start;
+  overflow-x: auto;
+  padding: 10px;
+
+   scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.ace-deck-row::-webkit-scrollbar {
+  display: none;
+}
+
+.ace-deck-row-with-names {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  padding: 10px;
+  align-items: center;
+}
+
+.ace-players-table {
+  width: auto;
+  border-collapse: collapse;
+  background: var(--card-bg);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 10px;
+}
+
+.ace-players-table th,
+.ace-players-table td {
+  padding: 12px;
+  text-align: left;
+}
+
+.ace-players-table thead {
+  background: var(--table-header-bg);
+}
+
+.ace-players-table tbody tr {
+  border-top: 1px solid var(--border-color);
+}
+
+.ace-players-table tbody tr:hover {
+  background: var(--row-hover-bg);
+}
+
+.ace-players-table,
+.ace-players-table th,
+.ace-players-table td {
+  color: #000000;
+}
+
+.ace-center-area {
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  /* align-content: center; */
+}
+
+.ace-panel {
+  width: auto;
+  min-width: 80px;
+  border: 2px solid #444;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px
+}
+
+.ace-discard.active {
+  border-color: green;
+}
+
+.ace-scroll-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Base card */
+.ace-card {
+  flex: 0 0 auto; /* Prevent shrinking */
+  width: 80px; /* Reduced width */
+  aspect-ratio: 2.5 / 3.5;
+  border-radius: 12px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  user-select: none;
+  background: white;
+}
+
+.ace-card:active,
+.ace-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Corner text */
+.ace-card-corner {
+  position: absolute;
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 6px;
+}
+
+.ace-top-left {
+  top: 0;
+  left: 0;
+}
+
+.ace-bottom-right {
+  bottom: 0;
+  right: 0;
+  transform: rotate(360deg);
+}
+
+/* Center symbol */
+.ace-card-symbol {
+  font-size: 0.7rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.ace-card-symbol-4-card{
+  font-size: 0.7rem;
+  font-weight: bold;
+  color: #00d10e;
+  text-align: center;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+/* RED SUITS */
+.ace-suit-heart,
+.ace-suit-diamond {
+  color: #d10000;
+}
+
+/* BLACK SUITS */
+.ace-suit-spade,
+.ace-suit-club {
+  color: #000;
+}
+
+/* Joker */
+.ace-suit-joker {
+  color: #007bff;
+  font-weight: bold;
+}
+
+.ace-selected-card {
+  outline: 3px solid gold;
+}
+
+.ace-clickable {
+  cursor: pointer;
+}
+
+.ace-selected-row {
+  display: flex;
+  gap: 6px;
+}
+
+.ace-action-bar {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

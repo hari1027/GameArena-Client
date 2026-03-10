@@ -1,0 +1,131 @@
+.app-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-main);
+  color: var(--text-primary);
+}
+
+.topbar {
+  height: auto;
+  background-color: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.icon-btn {
+  transition: transform 0.15s ease, opacity 0.15s ease;
+  cursor: pointer;
+}
+
+.icon-btn:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+  cursor: pointer;
+}
+
+.mic-active {
+  animation: pulse 1.2s infinite;
+  color: var(--primary-accent);
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(0, 255, 0, 0.6);
+  }
+  70% {
+    transform: scale(1.15);
+    box-shadow: 0 0 0 10px rgba(0, 255, 0, 0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.dashboard-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+}
+
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  /* max-width: 1100px; */
+  margin: 0 auto;
+}
+
+.game-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 80px; /* 🔥 equal height */
+}
+
+@media (max-width: 600px) {
+  .game-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .game-card {
+    min-height: 80px;
+  }
+}
+
+.play-button-1 {
+  cursor: pointer;
+  padding: 5px;
+  border-color: black;
+  background-color: coral;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+.play-button-2 {
+  cursor: pointer;
+  padding: 5px;
+  border-color: black;
+  background-color: darkviolet;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+.game-card h3 {
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.game-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: auto;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

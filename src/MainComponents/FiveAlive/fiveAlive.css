@@ -1,0 +1,241 @@
+.fiveAlive-app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-main);
+  color: var(--text-primary);
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.fiveAlive-app-container::-webkit-scrollbar {
+  display: none;
+}
+
+
+.fiveAlive-bottom-deck-wrapper {
+  padding: 10px;
+}
+
+/* Horizontal Scroll Row */
+.fiveAlive-deck-row {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-start;
+  overflow-x: auto;
+  padding: 10px;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.fiveAlive-deck-row::-webkit-scrollbar {
+  display: none;
+}
+
+/* Reduced Card Size */
+.fiveAlive-card {
+  flex: 0 0 auto; /* Prevent shrinking */
+  width: 80px; /* Reduced width */
+  aspect-ratio: 2.5 / 3.5;
+  border-radius: 12px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  user-select: none;
+}
+
+.fiveAlive-card:active,
+.fiveAlive-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.fiveAlive-card-corner {
+  position: absolute;
+  font-size: 0.8rem;
+  font-weight: 800;
+  padding: 6px;
+}
+
+.fiveAlive-top-left {
+  top: 0;
+  left: 0;
+}
+.fiveAlive-bottom-right {
+  bottom: 0;
+  right: 0;
+  transform: rotate(180deg);
+}
+
+.fiveAlive-card-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
+}
+
+.fiveAlive-card-symbol {
+  font-size: 2rem; /* Reduced symbol size */
+  font-weight: 900;
+}
+
+.fiveAlive-card-label {
+  font-size: 0.55rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  margin-top: 4px;
+  opacity: 0.8;
+}
+
+/* --- Gradients --- */
+
+/* Special Cards */
+.fiveAlive-card-Five-Alive {
+  background: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);
+  color: #002200;
+}
+
+.fiveAlive-card-plus-one {
+  background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+  color: #002200;
+}
+.fiveAlive-card-pass-me-by {
+  background: linear-gradient(135deg, #fdb99b 0%, #cf8bf3 50%, #a770ef 100%);
+  color: #200030;
+}
+
+/* Existing Specials */
+.fiveAlive-card-skip {
+  background: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);
+}
+.fiveAlive-card-reverse {
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+}
+.fiveAlive-card-plus-two {
+  background: linear-gradient(135deg, #ff9966 0%, #ff5e62 100%);
+}
+.fiveAlive-card-bomb {
+  background: linear-gradient(135deg, #232526 0%, #414345 100%);
+  border-color: #666;
+}
+.fiveAlive-card-shuffle {
+  background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
+}
+.fiveAlive-card-equal-to-10 {
+  background: linear-gradient(135deg, #ff9966 0%, #ff5e62 100%);
+}
+.fiveAlive-card-equal-to-21 {
+  background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
+}
+.fiveAlive-card-equal-to-0 {
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+}
+
+/* Numbers */
+.fiveAlive-card-0 {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+.fiveAlive-card-1 {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  color: #002;
+}
+.fiveAlive-card-2 {
+  background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+  color: #300;
+}
+.fiveAlive-card-3 {
+  background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+  color: #022;
+}
+.fiveAlive-card-4 {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+.fiveAlive-card-5 {
+  background: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+  color: #333;
+}
+.fiveAlive-card-6 {
+  background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+  color: #002;
+}
+.fiveAlive-card-7 {
+  background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+}
+
+.fiveAlive-players-table {
+  width: auto;
+  border-collapse: collapse;
+  background: var(--card-bg);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 10px;
+}
+
+.fiveAlive-players-table th,
+.fiveAlive-players-table td {
+  padding: 12px;
+  text-align: left;
+}
+
+.fiveAlive-players-table thead {
+  background: var(--table-header-bg);
+}
+
+.fiveAlive-players-table tbody tr {
+  border-top: 1px solid var(--border-color);
+}
+
+.fiveAlive-players-table tbody tr:hover {
+  background: var(--row-hover-bg);
+}
+
+.fiveAlive-players-table,
+.fiveAlive-players-table th,
+.fiveAlive-players-table td {
+  color: #000000;
+}
+
+.fiveAlive-center-area {
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  /* align-content: center; */
+}
+
+.fiveAlive-panel {
+  width: auto;
+  min-width: 80px;
+  border: 2px solid #444;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px
+}
+
+.fiveAlive-discard.active {
+  border-color: green;
+}
+
+.fiveAlive-scroll-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

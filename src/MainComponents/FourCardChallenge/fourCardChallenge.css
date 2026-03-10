@@ -1,0 +1,202 @@
+.fourCard-app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-main);
+  color: var(--text-primary);
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.fourCard-app-container::-webkit-scrollbar {
+  display: none;
+}
+
+
+.fourCard-bottom-deck-wrapper {
+  padding: 10px;
+}
+
+/* Horizontal Scroll Row */
+.fourCard-deck-row {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-start;
+  overflow-x: auto;
+  padding: 10px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.fourCard-deck-row::-webkit-scrollbar {
+  display: none;
+}
+
+.fourCard-players-table {
+  width: auto;
+  border-collapse: collapse;
+  background: var(--card-bg);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 10px;
+}
+
+.fourCard-players-table th,
+.fourCard-players-table td {
+  padding: 12px;
+  text-align: left;
+}
+
+.fourCard-players-table thead {
+  background: var(--table-header-bg);
+}
+
+.fourCard-players-table tbody tr {
+  border-top: 1px solid var(--border-color);
+}
+
+.fourCard-players-table tbody tr:hover {
+  background: var(--row-hover-bg);
+}
+
+.fourCard-players-table,
+.fourCard-players-table th,
+.fourCard-players-table td {
+  color: #000000;
+}
+
+.fourCard-center-area {
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  /* align-content: center; */
+}
+
+.fourCard-panel {
+  width: auto;
+  min-width: 80px;
+  border: 2px solid #444;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px
+}
+
+.fourCard-discard.active {
+  border-color: green;
+}
+
+.fourCard-scroll-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Base card */
+.fourCard-card {
+    flex: 0 0 auto; /* Prevent shrinking */
+  width: 80px; /* Reduced width */
+  aspect-ratio: 2.5 / 3.5;
+  border-radius: 12px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  user-select: none;
+  background: white;
+}
+
+.fourCard-card:active,
+.fourCard-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Corner text */
+.fourCard-card-corner {
+  position: absolute;
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 6px;
+}
+
+.fourCard-top-left {
+  top: 0;
+  left: 0;
+}
+
+.fourCard-bottom-right {
+  bottom: 0;
+  right: 0;
+  transform: rotate(360deg);
+}
+
+/* Center symbol */
+.fourCard-card-symbol {
+  font-size: 0.7rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.fourCard-card-symbol-4-card{
+  font-size: 0.7rem;
+  font-weight: bold;
+  color: #00d10e;
+  text-align: center;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+/* RED SUITS */
+.fourCard-suit-heart,
+.fourCard-suit-diamond {
+  color: #d10000;
+}
+
+/* BLACK SUITS */
+.fourCard-suit-spade,
+.fourCard-suit-club {
+  color: #000;
+}
+
+/* Joker */
+.fourCard-suit-joker {
+  color: #007bff;
+  font-weight: bold;
+}
+
+.fourCard-selected-card {
+  outline: 3px solid gold;
+}
+
+.fourCard-clickable {
+  cursor: pointer;
+}
+
+.fourCard-selected-row {
+  display: flex;
+  gap: 6px;
+}
+
+.fourCard-action-bar {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

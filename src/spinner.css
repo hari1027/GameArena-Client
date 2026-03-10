@@ -1,0 +1,33 @@
+.spinner-overlay {
+  position: fixed;
+  inset: 0; /* top, right, bottom, left = 0 */
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
+
+  z-index: 999999;
+
+  pointer-events: all; /* blocks clicks */
+}
+
+.spinner {
+  width: 70px;
+  height: 70px;
+
+  border: 7px solid #e5e7eb;
+  border-top: 7px solid #2563eb;
+
+  border-radius: 50%;
+
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
