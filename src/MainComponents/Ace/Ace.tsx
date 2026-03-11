@@ -1,10 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { Room } from "../../Utils/LobbyDetails";
 import Card from "./Card";
 import "./ace.css";
 import type { AceGameDetails } from "../../Utils/Ace";
 import TurnTimer from "../TurnTimer";
+import type { SnackbarHandle } from "../../GlobalSnackbar";
+import GlobalSnackbar from "../../GlobalSnackbar";
 
 interface AceProps {
   roomDetails: Room | null;
@@ -18,6 +20,7 @@ const Ace = ({ roomDetails, socketState, aceGameDetails, localLeaveRoom }: AcePr
   const username = sessionStorage.getItem("username");
   const [playedCard, setPlayedCard] = useState<any | null>(null);
   const [resetTimer, setResetTimer] = useState(false);
+   const snackbarRef = useRef<SnackbarHandle>(null);
 
   if (!aceGameDetails) return null;
 
@@ -46,7 +49,8 @@ const Ace = ({ roomDetails, socketState, aceGameDetails, localLeaveRoom }: AcePr
       const hasRoundSuitCard = myCards.some((c: any) => c.suit === roundSuit);
 
       if (hasRoundSuitCard) {
-        alert("Illegal move: You must follow the round suit");
+        //alert("Illegal move: You must follow the round suit");
+        snackbarRef.current?.showNotification("Illegal move: You must follow the round suit", "error");
         return;
       }
     }
@@ -163,6 +167,7 @@ const Ace = ({ roomDetails, socketState, aceGameDetails, localLeaveRoom }: AcePr
           ))}
         </div>
       </div>
+      <GlobalSnackbar ref={snackbarRef} />
     </div>
   );
 };

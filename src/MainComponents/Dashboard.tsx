@@ -146,8 +146,9 @@ const Dashboard = ({
       //need to implement pause screen for grace time which we are going to give with a state to handle multiple disconnections of user at same time
     });
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     newSocket.on("user rejoined", (updatedRoom) => {
-      console.log(updatedRoom);
+      // console.log(updatedRoom);
       setLoading(false);
       //need to implement the release of pause screen with a state to handle multiple disconnections of user at same time
     });
@@ -567,8 +568,9 @@ const Dashboard = ({
   const localChangeGameType = async (roomId: string) => {
     setLoading(true);
     try {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const response = await changeGameType(roomId);
-      console.log(response.message);
+      // console.log(response.message);
       setLoading(false);
     } catch (error) {
       setLoading(false);
@@ -602,6 +604,7 @@ const Dashboard = ({
           return;
         }
 
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const response = await changeGameName({
           roomId,
           username,
@@ -611,7 +614,7 @@ const Dashboard = ({
           isEvenPlayers: selectedGame.is_only_even_players_required,
         });
 
-        console.log(response.message);
+        // console.log(response.message);
       } else {
         snackbarRef.current?.showNotification(
           "RoomId , GameName and Username is required",
@@ -639,8 +642,9 @@ const Dashboard = ({
     setLoading(true);
     try {
       if (roomDetails?.roomId) {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const response = await startGame(roomDetails.roomId);
-        console.log(response);
+        // console.log(response);
       } else {
         snackbarRef.current?.showNotification(
           "RoomId is required to start the game",

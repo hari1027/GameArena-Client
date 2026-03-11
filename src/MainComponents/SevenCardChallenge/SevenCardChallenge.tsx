@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type {
   SevenCard,
   SevenCardChallengeGameDetails,
@@ -9,6 +9,8 @@ import type { Room } from "../../Utils/LobbyDetails";
 import "./sevenCardChallenge.css";
 import Card from "./Card";
 import TurnTimer from "../TurnTimer";
+import type { SnackbarHandle } from "../../GlobalSnackbar";
+import GlobalSnackbar from "../../GlobalSnackbar";
 
 interface SevenCardChallengeProps {
   roomDetails: Room | null;
@@ -30,6 +32,7 @@ const SevenCardChallenge = ({
     useState<boolean>(false);
   const [resetTimer, setResetTimer] = useState(false);
   const [showPickCardBoxes, setShowPickCardBoxes] = useState(false)
+  const snackbarRef = useRef<SnackbarHandle>(null);
 
   if (!sevenCardChallengeGameDetails) return null;
 
@@ -140,7 +143,8 @@ const SevenCardChallenge = ({
       jokerRankOfTheRound.suit
     ) {
       if (!isValidPlay(playedCards, jokerRankOfTheRound.rank)) {
-        alert("Invalid cards combination");
+        //alert("Invalid cards combination");
+        snackbarRef.current?.showNotification("Invalid cards combination", "error");
         setCardsAddedToDiscardPile(false);
         setShowPickCardBoxes(false)
         return;
@@ -364,6 +368,7 @@ const SevenCardChallenge = ({
           Challenge
         </button>
       </div>
+      <GlobalSnackbar ref={snackbarRef} />
     </div>
   );
 };
