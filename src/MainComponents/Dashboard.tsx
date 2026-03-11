@@ -147,7 +147,7 @@ const Dashboard = ({
     });
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    newSocket.on("user rejoined", (updatedRoom) => {
+    newSocket.on("user rejoined", (_updatedRoom) => {
       // console.log(updatedRoom);
       setLoading(false);
       //need to implement the release of pause screen with a state to handle multiple disconnections of user at same time
@@ -569,7 +569,8 @@ const Dashboard = ({
     setLoading(true);
     try {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const response = await changeGameType(roomId);
+      //const response = 
+      await changeGameType(roomId);
       // console.log(response.message);
       setLoading(false);
     } catch (error) {
@@ -605,7 +606,8 @@ const Dashboard = ({
         }
 
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        const response = await changeGameName({
+        // const response =
+         await changeGameName({
           roomId,
           username,
           gameName: data.gameName,
@@ -643,7 +645,8 @@ const Dashboard = ({
     try {
       if (roomDetails?.roomId) {
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        const response = await startGame(roomDetails.roomId);
+        //const response =
+        await startGame(roomDetails.roomId);
         // console.log(response);
       } else {
         snackbarRef.current?.showNotification(
