@@ -89,7 +89,7 @@ const Ace = ({ roomDetails, socketState, aceGameDetails, localLeaveRoom }: AcePr
           </thead>
           <tbody>
             {players.map((p) => (
-              <tr key={p.username}>
+              <tr key={p.username} className={(currentTurn === p.username) ? "ace-background-green" : ""}>
                 <td>{p.username}</td>
                 <td>{p.cardsCount}</td>
               </tr>

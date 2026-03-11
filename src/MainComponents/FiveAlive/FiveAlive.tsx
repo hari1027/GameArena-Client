@@ -118,7 +118,7 @@ const FiveAlive = ({
           </thead>
           <tbody>
             {players.map((p) => (
-              <tr key={p.username}>
+              <tr key={p.username} className={(currentTurn === p.username) ? "fiveAlive-background-green" : ""}>
                 <td>{p.username}</td>
                 <td>{p.lives}</td>
                 <td>{p.cardsCount}</td>

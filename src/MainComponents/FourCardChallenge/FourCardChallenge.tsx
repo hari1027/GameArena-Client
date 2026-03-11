@@ -23,12 +23,15 @@ const FourCardChallenge = ({
   const username = sessionStorage.getItem("username");
   const [playedCard, setPlayedCard] = useState<any | null>(null);
   const [resetTimer, setResetTimer] = useState(false);
+  const [showPickCardBoxes, setShowPickCardBoxes] = useState(false);
+  const [continueTimer, setContinueTimer] = useState(false);
 
   if (!fourCardChallengeGameDetails) return null;
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
     setResetTimer(true);
+    setShowPickCardBoxes(false);
   }, [fourCardChallengeGameDetails]);
 
   const {
@@ -51,8 +54,10 @@ const FourCardChallenge = ({
       drawChoice: choice,
     });
 
+    setContinueTimer(false)
     setPlayedCard(null);
     setResetTimer(false);
+    setShowPickCardBoxes(false);
   };
 
   const onDragStart = (card: any) => (e: React.DragEvent) => {
@@ -64,7 +69,9 @@ const FourCardChallenge = ({
     if (!canPlay || playedCard !== null) return;
 
     const data = JSON.parse(e.dataTransfer.getData("card"));
+    setContinueTimer(true)
     setPlayedCard(data.card);
+    setShowPickCardBoxes(true)
   };
 
   const allowDrop = (e: React.DragEvent) => e.preventDefault();
@@ -103,7 +110,7 @@ const FourCardChallenge = ({
           </thead>
           <tbody>
             {players.map((p) => (
-              <tr key={p.id}>
+              <tr key={p.id} className={(turn === p.id) ? "fourCard-background-green" : ""}>
                 <td>{p.id}</td>
                 <td>{p.totalPoints}</td>
                 <td>{p.handCount}</td>
@@ -114,7 +121,7 @@ const FourCardChallenge = ({
 
         <div className="fourCard-center-area">
           <div
-            className="fourCard-panel fourCard-clickable"
+            className={showPickCardBoxes ? "fourCard-panel-active fourCard-clickable" : "fourCard-panel fourCard-notclickable"}
             onClick={() => finishTurn("deck")}
           >
             <h3>Deck Card Count - {deckCount}</h3>
@@ -146,7 +153,7 @@ const FourCardChallenge = ({
           </div>
 
           <div
-            className="fourCard-panel fourCard-clickable"
+            className={showPickCardBoxes ? "fourCard-panel-active fourCard-clickable" : "fourCard-panel fourCard-notclickable"}
             onClick={() => finishTurn("discard")}
           >
             <h3>Top Discarded Card For You</h3>
@@ -167,6 +174,7 @@ const FourCardChallenge = ({
           canPlay={canPlay}
           leaveRoom={localLeaveRoom}
           resetTimer={resetTimer}
+          continueTimer={continueTimer}
         />
         <div className="fourCard-deck-row">
           {myCards.map((card: any, i: number) => (
@@ -176,7 +184,9 @@ const FourCardChallenge = ({
               onDragStart={onDragStart(card)}
               onDoubleClick={() => {
                 if (canPlay && playedCard === null) {
+                  setContinueTimer(true)
                   setPlayedCard(card);
+                  setShowPickCardBoxes(true)
                 }
               }}
             >

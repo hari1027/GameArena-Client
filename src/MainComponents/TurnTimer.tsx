@@ -5,12 +5,13 @@ interface TurnTimerProps {
   canPlay: boolean;
   leaveRoom: () => void;
   resetTimer: boolean;
+  continueTimer? : boolean
 }
 
 const TOTAL_TIME = 80;
 const WARNING_TIME = 40;
 
-const TurnTimer = ({ canPlay, leaveRoom, resetTimer }: TurnTimerProps) => {
+const TurnTimer = ({ canPlay, leaveRoom, resetTimer , continueTimer = false }: TurnTimerProps) => {
   // Read sessionStorage ONCE at init so the canPlay effect can use it
   const savedTime = sessionStorage.getItem("timeleft");
   const initialTime = savedTime ? Number(savedTime) : TOTAL_TIME;
@@ -39,7 +40,7 @@ const TurnTimer = ({ canPlay, leaveRoom, resetTimer }: TurnTimerProps) => {
 
   // Main timer effect
   useEffect(() => {
-    if (!canPlay) {
+    if (!canPlay && !continueTimer) {
       if (intervalRef.current) {
         clearInterval(intervalRef.current);
         intervalRef.current = null;
@@ -91,7 +92,7 @@ const TurnTimer = ({ canPlay, leaveRoom, resetTimer }: TurnTimerProps) => {
   }, [resetTimer]);
 
   const getColorClass = () => {
-    if (!canPlay) return "timer-blue";
+    if (!canPlay && !continueTimer) return "timer-blue";
     if (warning)  return "timer-red";
     return "timer-green";
   };
@@ -99,7 +100,7 @@ const TurnTimer = ({ canPlay, leaveRoom, resetTimer }: TurnTimerProps) => {
   return (
     <div className="turn-timer-wrapper">
       <div className={`turn-timer ${getColorClass()}`}>
-        {canPlay ? `Time Left: ${timeLeft} seconds` : "It's not your turn"}
+        {canPlay ? `Time Left: ${timeLeft} seconds` : (continueTimer ? `Time Left: ${timeLeft} seconds` : "It's not your turn")}
       </div>
     </div>
   );

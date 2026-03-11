@@ -29,6 +29,7 @@ const SevenCardChallenge = ({
   const [cardsAddedToDiscardPile, setCardsAddedToDiscardPile] =
     useState<boolean>(false);
   const [resetTimer, setResetTimer] = useState(false);
+  const [showPickCardBoxes, setShowPickCardBoxes] = useState(false)
 
   if (!sevenCardChallengeGameDetails) return null;
 
@@ -46,6 +47,7 @@ const SevenCardChallenge = ({
     // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
     setResetTimer(true);
+    setShowPickCardBoxes(false)
   }, [sevenCardChallengeGameDetails]);
 
   const finishTurn = (
@@ -140,6 +142,7 @@ const SevenCardChallenge = ({
       if (!isValidPlay(playedCards, jokerRankOfTheRound.rank)) {
         alert("Invalid cards combination");
         setCardsAddedToDiscardPile(false);
+        setShowPickCardBoxes(false)
         return;
       }
     }
@@ -151,10 +154,10 @@ const SevenCardChallenge = ({
       drawChoice: choice,
       selectedDiscardCard: selectedDiscardCard,
     });
-
     setPlayedCards([]);
     setCardsAddedToDiscardPile(false);
     setResetTimer(false);
+    setShowPickCardBoxes(false)
   };
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -206,7 +209,7 @@ const SevenCardChallenge = ({
           </thead>
           <tbody>
             {players.map((p) => (
-              <tr key={p.id}>
+              <tr key={p.id} className={(turn === p.id) ? "sevenCard-background-green" : ""}>
                 <td>{p.id}</td>
                 <td>{p.totalPoints}</td>
                 <td>{p.handCount}</td>
@@ -235,7 +238,7 @@ const SevenCardChallenge = ({
             )}
 
           <div
-            className="sevenCard-panel sevenCard-clickable"
+            className={showPickCardBoxes ? "sevenCard-panel-active sevenCard-clickable" : "sevenCard-panel sevenCard-notclickable"}
             onClick={() => {
               if (playedCards.length > 0 && cardsAddedToDiscardPile) {
                 finishTurn("deck");
@@ -256,6 +259,7 @@ const SevenCardChallenge = ({
             onClick={() => {
               if (canPlay && !cardsAddedToDiscardPile && playedCards.length > 0) {
                 setCardsAddedToDiscardPile(true);
+                setShowPickCardBoxes(true)
               }
             }}
           >
@@ -277,7 +281,7 @@ const SevenCardChallenge = ({
             </div>
           </div>
 
-          <div className="sevenCard-panel sevenCard-clickable">
+          <div className={showPickCardBoxes ? "sevenCard-panel-active sevenCard-clickable" : "sevenCard-panel sevenCard-notclickable"}>
             <h3>Pick a Single Card from Top Discarded Cards for you</h3>
             <div className="sevenCard-deck-row-withnames">
               {discardTop &&

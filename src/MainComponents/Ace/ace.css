@@ -70,9 +70,9 @@
   border-top: 1px solid var(--border-color);
 }
 
-.ace-players-table tbody tr:hover {
+/* .ace-players-table tbody tr:hover {
   background: var(--row-hover-bg);
-}
+} */
 
 .ace-players-table,
 .ace-players-table th,
@@ -98,6 +98,10 @@
   align-items: center;
   justify-content: center;
   padding: 10px
+}
+
+.ace-background-green{
+  background-color: lightgreen;
 }
 
 .ace-discard.active {

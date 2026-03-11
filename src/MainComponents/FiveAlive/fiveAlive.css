@@ -196,13 +196,17 @@
   background: var(--table-header-bg);
 }
 
+.fiveAlive-background-green{
+  background-color: lightgreen;
+}
+
 .fiveAlive-players-table tbody tr {
   border-top: 1px solid var(--border-color);
 }
 
-.fiveAlive-players-table tbody tr:hover {
+/* .fiveAlive-players-table tbody tr:hover {
   background: var(--row-hover-bg);
-}
+} */
 
 .fiveAlive-players-table,
 .fiveAlive-players-table th,

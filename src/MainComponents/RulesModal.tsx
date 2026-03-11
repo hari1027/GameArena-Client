@@ -28,7 +28,7 @@ const rulesData = [
         "Scrools (Vertically and Horizontally) are available in all Screens so check Correctly (Example: While Viewing you cards in the games)",
         "To Discard a Card in the games (you can double click the card or Drag and drop in the correct Box - for computer, laptop and BigScreen's) (you can double click the card - for Tablet and Mobile) you can understand once you are in the game",
         "For Some Games (Seven Card Challenge) you can Discard many cards if you want so CheckBox will be available to each card's to Select and unSelect Cards",
-        "To (Pick The Card Either from deck or Discarded Top you should click that Respective Boxes) for some games only Deck option will be there (According to Rules of the game it will Change)",
+        "To (Pick The Card Either from deck or Discarded Top you should click that Respective Boxes - in FourCardChallenge and SevenCardChallenge) for some games there will not be card pick option (According to Rules of the game it will Change)",
         "You Should Play your Move within the Stipulated time given (it will be running in the game screen) else you will be automatically Kicked from room and replaced by a Bot",
         "You can see the (Game details) in the Game Screen Once you are inside a Game",
         "Individual Game Rules are Illustrated below please read that and once you get the flow you can Enjoy these games"

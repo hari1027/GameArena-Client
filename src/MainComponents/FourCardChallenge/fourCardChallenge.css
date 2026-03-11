@@ -59,9 +59,9 @@
   border-top: 1px solid var(--border-color);
 }
 
-.fourCard-players-table tbody tr:hover {
+/* .fourCard-players-table tbody tr:hover {
   background: var(--row-hover-bg);
-}
+} */
 
 .fourCard-players-table,
 .fourCard-players-table th,
@@ -82,6 +82,17 @@
   width: auto;
   min-width: 80px;
   border: 2px solid #444;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px
+}
+
+.fourCard-panel-active {
+  width: auto;
+  min-width: 80px;
+  border: 2px solid green;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -186,6 +197,14 @@
 
 .fourCard-clickable {
   cursor: pointer;
+}
+
+.fourCard-notclickable{
+  cursor: not-allowed
+}
+
+.fourCard-background-green{
+  background-color: lightgreen;
 }
 
 .fourCard-selected-row {

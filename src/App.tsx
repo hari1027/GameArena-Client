@@ -53,24 +53,35 @@ function App() {
       }
     };
 
+    // Check if device is mobile or tablet
+    // const isMobileOrTablet = /Mobi|Android|iPad|iPhone|iPod|Tablet/i.test(
+    //   navigator.userAgent,
+    // );
+
     // Desktop — window/tab close
     window.addEventListener("beforeunload", makeInactive);
 
     // Mobile + tablet — fires when tab is hidden, app backgrounded, or closed
-    const handleVisibilityChange = () => {
-      if (document.visibilityState === "hidden") {
-        makeInactive();
-      }
-    };
-    document.addEventListener("visibilitychange", handleVisibilityChange);
+    // const handleVisibilityChange = () => {
+    //   if (document.visibilityState === "hidden") {
+    //     makeInactive();
+    //   }
+    // };
 
-    // iOS Safari fallback
-    window.addEventListener("pagehide", makeInactive);
+    // if (isMobileOrTablet) {
+      //document.addEventListener("visibilitychange", handleVisibilityChange);
+      window.addEventListener("pagehide", makeInactive);
+    // }
 
     return () => {
       window.removeEventListener("beforeunload", makeInactive);
-      document.removeEventListener("visibilitychange", handleVisibilityChange);
-      window.removeEventListener("pagehide", makeInactive);
+      // if (isMobileOrTablet) {
+      //   document.removeEventListener(
+      //     "visibilitychange",
+      //     handleVisibilityChange,
+      //   );
+        window.removeEventListener("pagehide", makeInactive);
+      // }
     };
   }, []);
 
