@@ -30,6 +30,7 @@ import type { FiveAliveGameDetails } from "../Utils/Five Alive";
 import type { FourCardChallengeGameDetails } from "../Utils/Four Card Challenge";
 import type { SevenCardChallengeGameDetails } from "../Utils/Seven Card Challenge";
 import type { AceGameDetails } from "../Utils/Ace";
+import type { TicketToRideGameDetails } from "../Utils/Ticket To Ride";
 import Spinner from "../Spinner";
 
 interface DashboardProps {
@@ -73,6 +74,9 @@ const Dashboard = ({
   const [sevenCardChallengeGameDetails, setSevenCardChallengeGameDetails] =
     useState<SevenCardChallengeGameDetails | null>(null);
   const [aceGameDetails, setAceGameDetails] = useState<AceGameDetails | null>(
+    null,
+  );
+   const [ticketToRideGameDetails, setTicketToRideGameDetails] = useState<TicketToRideGameDetails | null>(
     null,
   );
 
@@ -197,6 +201,17 @@ const Dashboard = ({
       }
     });
 
+    newSocket.on("TicketToRide Game Object", (gameObj) => {
+      if (
+        sessionStorage.getItem("gameStarted") &&
+        sessionStorage.getItem("gameStarted") !== null &&
+        sessionStorage.getItem("gameStarted") === "true" &&
+        gameObj.to === username
+      ) {
+        setTicketToRideGameDetails(gameObj);
+      }
+    });
+
     newSocket.on("room_update", (updatedRoom) => {
       //  if(updatedRoom.roomId === roomId){
       if (onlineRoomsView) {
@@ -277,6 +292,9 @@ const Dashboard = ({
       if (aceGameDetails !== null) {
         setAceGameDetails(null);
       }
+      if (ticketToRideGameDetails !== null) {
+        setTicketToRideGameDetails(null);
+      }
     });
 
     newSocket.on("fivealive_game_state", (data) => {
@@ -314,6 +332,17 @@ const Dashboard = ({
 
     newSocket.on("ace_game_state", (data) => {
       setAceGameDetails(data);
+      snackbarRef.current?.showNotification(`${data.message}`, "info");
+      // setTimeout(() => {
+      //   snackbarRef.current?.showNotification(
+      //     data.currentTurn ? `${data.currentTurn}'s turn` : "",
+      //     "info",
+      //   );
+      // }, 3000);
+    });
+
+     newSocket.on("ticketToRide_game_state", (data) => {
+      setTicketToRideGameDetails(data);
       snackbarRef.current?.showNotification(`${data.message}`, "info");
       // setTimeout(() => {
       //   snackbarRef.current?.showNotification(
@@ -444,6 +473,9 @@ const Dashboard = ({
           }
           if (aceGameDetails !== null) {
             setAceGameDetails(null);
+          }
+           if (ticketToRideGameDetails !== null) {
+            setTicketToRideGameDetails(null);
           }
         } else {
           snackbarRef.current?.showNotification(
@@ -734,6 +766,7 @@ const Dashboard = ({
           fourCardChallengeGameDetails={fourCardChallengeGameDetails}
           sevenCardChallengeGameDetails={sevenCardChallengeGameDetails}
           aceGameDetails={aceGameDetails}
+          ticketToRideGameDetails={ticketToRideGameDetails}
         />
         {loading && <Spinner />}
       </>
@@ -778,6 +811,7 @@ const Dashboard = ({
           fourCardChallengeGameDetails,
           sevenCardChallengeGameDetails,
           aceGameDetails,
+          ticketToRideGameDetails,
         }}
       />
       {loading && <Spinner />}

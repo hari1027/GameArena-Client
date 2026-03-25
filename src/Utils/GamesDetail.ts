@@ -37,6 +37,13 @@ export const games: Game[] = [
     max_players: 8,
     is_only_even_players_required: false,
   },
+   {
+    name: "Ticket To Ride",
+    icon: Gamepad,
+    min_players: 2,
+    max_players: 5,
+    is_only_even_players_required: false,
+  },
 ];
 
 export interface GameWithoutIcon {

@@ -6,6 +6,10 @@
   color: var(--text-primary);
 }
 
+.dashboard-title {
+  margin-bottom: 20px;
+}
+
 .topbar {
   height: auto;
   background-color: var(--glass-bg);

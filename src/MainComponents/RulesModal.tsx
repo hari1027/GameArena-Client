@@ -31,7 +31,8 @@ const rulesData = [
         "To (Pick The Card Either from deck or Discarded Top you should click that Respective Boxes - in FourCardChallenge and SevenCardChallenge) for some games there will not be card pick option (According to Rules of the game it will Change)",
         "You Should Play your Move within the Stipulated time given (it will be running in the game screen) else you will be automatically Kicked from room and replaced by a Bot",
         "You can see the (Game details) in the Game Screen Once you are inside a Game",
-        "Individual Game Rules are Illustrated below please read that and once you get the flow you can Enjoy these games"
+        "Individual Game Rules are Illustrated below please read that and once you get the flow you can Enjoy these games",
+        "Try to play Ticket To Ride game mostly in laptops or Monitors as it is hard to view the map in mobile with too small screen. In mobile also it will work but it will be hard for you to view map in mobile"
     ]
   },
   {
@@ -127,6 +128,57 @@ const rulesData = [
       "If all players contribute a card on the same suit then also the round is over and all round cards will move to dustbin pile and player who puts largest rank of the suit will start the next round",
       "Once a player completes his in hand cards he escaped and he will further not be involved in the game",
       "Lowest to Highest Order - (2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9 -> 10 -> J -> Q -> k -> A)"
+    ]
+  },
+    {
+    gameName: "Ticket To Ride",
+    rules: [
+      "This game is a strategic game where the player with most Points wins the game",
+      "Each Player will have 45 trains and a color identity for them",
+      "This game have 58 destination tickets with varying points and 110 color cards (Red , Blue , Green , Pink , Orange , Yellow , White , Black - each 12 and 14 locomotive cards)",
+      "This game have a classical India Map as board with different city points",
+      "Initially the game starts by providing 4 destination tickets to each player . The player should keep minimum of 2 tickets mandatory and only 4 min's is available for the player to decide after that if not decided 2 random tickets will be discarded . Random player will start the round after Initial ticket discard is done",
+      "Your goal is to complete the destination without any gap's (like constructing a path between from and to points) to construct this we need color cards",
+      "There will be a deck of closed color cards and 5 face up color cards for the players to pick",
+      "In a particular round a player can either pick color cards or construct the path or take additional tickets",
+      "When you choose deck the top two deck cards will be added to your hand",
+      "When you choose face up card you can either pick 2 color cards (with same color or different) or a single locomotive card",
+      "If you choose Locomotive from face up card you can pick only one card alone not two as you are seeing and picking , if you get two locomotive's from deck also no issue its your luck.",
+      "Locomotive card can be used as a substitue for any color",
+      "While making take tickets move you will be provided 3 new destination tickets in that you have to keep minimum of atleast one mandatory",
+      "For example if you have a destination Ticket Bombay to Calcutta you cannot complete the full path at a single round (like even if you have all required cards to build you cannot do it in a single go)",
+      "You can travel from one city to next movable city alone in the board in one build move not from one destination ticket to other completely",
+      "To Contruct you have to provide the color cards required for that path to travel in exact counts",
+      "For Example to travel from Mangalore to Madras if 4 pink's are required means you have give 4 pinks's not like 2 pinks's ill give now and 2 later that is not possible . Travel from one city to possible next city by providing necessary cards is required",
+      "If you Dont have exact color required you can use locomotive as a substitue . For example 3 pinks and one locomotive , or even 2 pinks and 2 locomotive's , or even 4 locomotives also . Its your chooise . Remember locomotive can be substitute for any color",
+      "There will be gray color's in the board path but there will be no color card called gray . So Gray means also any color but of same.",
+      "For example if a path have 2 gray you have to provide 2 red's or 2 white's or 2 orange any color but same . You can use locomotive for gray also . In Game you will have option to select the color if you have many selecting scenarios for gray",
+      "There will be purple path also in some places which means that is locomotive path , means you have to definetely provide the required locomotive's to travel in that path (it will be 1 and 2 locomotive's complusory only)",
+      "You cannot build on a path once it is already build by someone or even you",
+      "For some path there will be dual path means another player can use the one more path which is available . Same player cannot build same dual path even if it is open to build",
+      "In dual path also if both are constructed another player cannot construct there",
+      "Once Constructed that path will be marked with stripes of the respective player color",
+      "You can find your identity color and other players identity color in the game",
+      "There will be not extra trains provided to any players - each player 45 trains alone",
+      "You will have the option of calling last round once you have so much less train in a way that you cannot build a path anymore (your trains < count of trains required to fill atleast one path in the board)",
+      "You will have the option but taking the decision is your chooise , at this moment also if you want you can take tickets",
+      "So What I am saying is as the game goes on you would have constructed the path and by taking tickets the destination coverage will be mostly or even completely already done for new tickets sometimes , In that also you have to keep only one madatory",
+      "Card points calculation is simple after game ends if you have completed the destination ticket (means you have to connect the from and to by any means is okie either shortest path or longest or you completed a destination using that path loop to complete another ticket you build , any means you have to connect it) that ticket points will be Added and if you have not completed that ticket points will get deducted from the tally",
+      "It is not complusory that you have to build path only to connect your destination . You can play destruction startegy like for (example - you cannot able to complete your some of your destination tickets as all possible ways to connect are closed , so you tried taking new destination ticket's for few rounds and nothing cannot be connected or large paths needs to be filled and you are getting minus points , you can start building randomly from any city to city and make other players not to complete thier destination . But you cannot see other players tickets only you can guess and build according to thier construction)",
+      "You can see the train count of all players",
+      "you can take as much tickets you want . (example - you took 3 tickets and all the three tickets cannot be achieved , try to keep ticket with less points)",
+      "you took another three tickets and in that you have 2 already completed (you cannot discard the ticket you keep on the previous round in this round)",
+      "Remember after accepting the ticket you cannot discard it further anymore , either you complete it or it becomes negative points for you",
+      "And finally you will have train points also which is diplayed in the top right of the board also",
+      "Each path will have 1 or 2 or 3 or 4 or 6 or 8 trains to complete a path city to city - if you construct itself it will added finally it is not neccessary weather you completed the desination with that path or not just like coin points",
+      "1 train path - 1 point , 2 train path - 2 point , 3 train path - 4 point , 4 train path - 7 point , 6 train path (tunnel) - 15 point , 8 train path (big tunnel) - 21 point ",
+      "Though big train path offers you extra points here as you go big the cities you are in will become less, shorter path more connectivity but rounds taken will be more as you are travelling by covering more cities and as game goes I can take tickets it will be connected moreover",
+      "It completely depends on how you make startegies in the game",
+      "To construct click on the city points and you will be shown the possible other cities you can pass",
+      "For dual path's selection you can click on the path after selecting the points",
+      "You will have a board and side panel to take cards and destination ticket's and call last round",
+      "Once last round is called by any player that is going to be the last round of the game meaning the game will be over before the player who started the game (all player gets equal amount of moves) no advantage for any",
+      "Once game ends you can see all players points in game end screen"
     ]
   }
 ];

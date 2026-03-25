@@ -5,13 +5,15 @@ interface TurnTimerProps {
   canPlay: boolean;
   leaveRoom: () => void;
   resetTimer: boolean;
+  gameName: string
   continueTimer? : boolean
 }
 
-const TOTAL_TIME = 80;
-const WARNING_TIME = 40;
+const TurnTimer = ({ canPlay, leaveRoom, resetTimer , gameName, continueTimer = false }: TurnTimerProps) => {
 
-const TurnTimer = ({ canPlay, leaveRoom, resetTimer , continueTimer = false }: TurnTimerProps) => {
+  const TOTAL_TIME = gameName === "Ticket To Ride" ? 120 : 80;
+  const WARNING_TIME = gameName === "Ticket To Ride" ? 60 : 40;
+
   // Read sessionStorage ONCE at init so the canPlay effect can use it
   const savedTime = sessionStorage.getItem("timeleft");
   const initialTime = savedTime ? Number(savedTime) : TOTAL_TIME;

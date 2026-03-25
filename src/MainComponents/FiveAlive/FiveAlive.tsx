@@ -161,6 +161,7 @@ const FiveAlive = ({
           canPlay={canPlay}
           leaveRoom={localLeaveRoom}
           resetTimer={resetTimer}
+          gameName = "Five Alive"
         />
         <div className="fiveAlive-deck-row">
           {myCards.map((card: any, i: number) => (

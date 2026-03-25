@@ -148,7 +148,7 @@ const Ace = ({ roomDetails, socketState, aceGameDetails, localLeaveRoom }: AcePr
       </div>
 
       <div className="ace-bottom-deck-wrapper">
-        <TurnTimer canPlay={canPlay} leaveRoom={localLeaveRoom} resetTimer={resetTimer} />
+        <TurnTimer canPlay={canPlay} leaveRoom={localLeaveRoom} resetTimer={resetTimer} gameName = "Ace"/>
         <div className="ace-deck-row">
           {myCards.map((card: any, i: number) => (
             <div

@@ -175,6 +175,7 @@ const FourCardChallenge = ({
           leaveRoom={localLeaveRoom}
           resetTimer={resetTimer}
           continueTimer={continueTimer}
+          gameName = "Four Card Challenge"
         />
         <div className="fourCard-deck-row">
           {myCards.map((card: any, i: number) => (

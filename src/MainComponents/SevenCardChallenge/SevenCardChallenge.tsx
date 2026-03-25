@@ -313,7 +313,7 @@ const SevenCardChallenge = ({
       </div>
 
       <div className="sevenCard-bottom-deck-wrapper">
-        <TurnTimer canPlay={canPlay} leaveRoom={localLeaveRoom} resetTimer={resetTimer} />
+        <TurnTimer canPlay={canPlay} leaveRoom={localLeaveRoom} resetTimer={resetTimer} gameName = "Seven Card Challenge"/>
         <div className="sevenCard-deck-row">
           {myCards &&
             myCards !== null &&

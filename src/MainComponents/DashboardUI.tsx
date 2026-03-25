@@ -32,6 +32,8 @@ import type { SevenCardChallengeGameDetails } from "../Utils/Seven Card Challeng
 import SevenCardChallenge from "./SevenCardChallenge/SevenCardChallenge";
 import type { AceGameDetails } from "../Utils/Ace";
 import Ace from "./Ace/Ace";
+import type { TicketToRideGameDetails } from "../Utils/Ticket To Ride";
+import TicketToRide from "./TicketToRide/TicketToRide";
 import RulesModal from "./RulesModal";
 
 interface DashboardUIProps {
@@ -91,6 +93,7 @@ interface DashboardUIProps {
   fourCardChallengeGameDetails : FourCardChallengeGameDetails | null;
   sevenCardChallengeGameDetails : SevenCardChallengeGameDetails | null;
   aceGameDetails : AceGameDetails | null;
+  ticketToRideGameDetails : TicketToRideGameDetails | null
 }
 
 const DashboardUI = ({
@@ -126,6 +129,7 @@ const DashboardUI = ({
   fourCardChallengeGameDetails,
   sevenCardChallengeGameDetails,
   aceGameDetails,
+  ticketToRideGameDetails,
 }: DashboardUIProps) => {
   return (
     <div className="app-container">
@@ -305,6 +309,10 @@ const DashboardUI = ({
 
       {(gameStarted && roomDetails && roomDetails.gameName === "Ace") &&
         <Ace roomDetails={roomDetails} socketState={socketState} aceGameDetails={aceGameDetails} localLeaveRoom={localLeaveRoom}/>
+      }
+
+      {(gameStarted && roomDetails && roomDetails.gameName === "Ticket To Ride") &&
+        <TicketToRide roomDetails={roomDetails} socketState={socketState} ticketToRideGameDetails={ticketToRideGameDetails} localLeaveRoom={localLeaveRoom}/>
       }
 
       <GlobalSnackbar ref={snackbarRef} />
