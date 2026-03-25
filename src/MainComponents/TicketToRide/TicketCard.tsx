@@ -4,8 +4,6 @@
 // Shows: FROM city → TO city, point value.
 // Optional completed / delta shown at game end.
 
-import React from "react";
-
 interface TicketCardProps {
   from:       string;
   to:         string;
